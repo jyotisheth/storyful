@@ -11,10 +11,6 @@ ${SAVE_STORY_BTN}           css:button[aria-label='Save Story']
 ${VIEW_SAVED_STORY_BTN}     css:a[aria-label='Saved Stories']
 
 *** Keywords ***
-Run Keyword Until Success
-    [Arguments]     ${KW}   @{KWARGS}
-    Wait Until Keyword Succeeds     5s     1s      ${KW}       @{KWARGS}
-
 Get First Story Card
     ${STORY_CARDS} =            Get WebElements     ${STORY_CARDS_LIST}
     ${STORY_CARD_FIRST} =       Set Variable    ${STORY_CARDS}[0]
@@ -32,3 +28,12 @@ Verify User Can Save Story
     ${ACTUAL_SAVED_STORY} =       Get First Story Card
     Should Be Equal     ${ACTUAL_SAVED_STORY}   ${EXPECTED_SAVED_STORY}
 
+Verify User Can Remove Saved Story
+    [Documentation]  Verify User Can Remove Saved Story
+    [Tags]  UI-Functional
+    Accept Cookies
+    ${EXPECTED_SAVED_STORY} =       Get First Story Card
+    Click Element       ${SAVE_STORY_BTN}
+    Click Element       ${VIEW_SAVED_STORY_BTN}
+    Click Element       ${UNSAVE_STORY_BTN}
+    Page Should Not Contain     ${EXPECTED_SAVED_STORY}

@@ -11,7 +11,12 @@ This project contains code for below usecases:
 
 ##### Prerequisites
 - Python 3.7.2 (installed and configured)
-```pip install -r requirements.txt```
+
+```
+python -m venv venv
+source venv/bin/activate
+ pip install -r requirements.txt
+```
 - ChromeDriver is setup on and added to PATH variable on machine
     How to Setup ChromeDriver [Mac](https://medium.com/@tripleaceme/setting-up-chrome-driver-on-mac-0f32580912c3)  [Windows](https://medium.com/@patrick.yoho11/installing-selenium-and-chromedriver-on-windows-e02202ac2b08).
 
